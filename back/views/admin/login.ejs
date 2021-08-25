@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/base.js"></script>
+    <style>
+        div.container {
+            width: 600px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                请登录
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" role="form" id="login">
+                    <div class="form-group has-feedback">
+                        <label class="col-sm-2 control-label" for="exampleInputEmail1">账号：</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" pattern="\w{3,10}" id="exampleInputEmail1" name='username' required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="exampleInputPassword1">密码：</label>
+                        <div class="col-sm-10">
+                            <input type="password" pattern="\w{3,8}" class="form-control" id="exampleInputPassword1" name='password'
+                                required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="exampleInputyzm">验证码：</label>
+                        <div class="col-sm-4">
+                            <input pattern="\w{4}" required pattern="\w{4}" class="form-control" id="exampleInputyzm" name='yzm'>
+                        </div>
+                        <div class="col-sm-6" id='captcha'>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2 checkbox">
+                            <label>
+                                <input type="checkbox"> 记住密码
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2 checkbox">
+                            <button type="submit" class="btn btn-primary">登录</button>
+                            <button style="margin:0 100px" type="reset" class="btn btn-default">重置</button>
+                            <a data-toggle="modal" href="#register">注册</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="register" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal" role="form" id="regForm">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">请注册</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group has-feedback">
+                            <label class="col-sm-3 control-label" for="exampleInputzh">帐号：</label>
+                            <div class="col-sm-9">
+                                <input name='username' class="form-control" id="exampleInputzh">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">密码：</label>
+                            <div class="col-sm-9">
+                                <input type="password" name="password" class="form-control pwd" placeholder="请输入您的密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">确认密码：</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control pwd" placeholder="请输入您确认密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">昵称：</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" name='nicheng'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9 col-sm-offset-3 checkbox">
+                                <label>
+                                    <input type="checkbox"> 记住密码
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class=" btn btn-primary">注册</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        //------------------登录-------------------------------
+        var loginForm = document.getElementById('login');
+        var svg = document.getElementById('captcha');
+        $.getJSON('/admin/captcha', function (rs) {
+            svg.innerHTML = rs;
+        })
+
+        base.add(svg, 'click', function () {
+            $.getJSON('/admin/captcha', rs => {
+                this.innerHTML = rs;
+            })
+        })
+        base.add(loginForm, 'submit', function (ev) {
+            var e = ev || event;
+            base.stopDefault(e);
+            $.post('/admin/logined', $(this).serialize(), function (rs) {
+                if (rs === 1)
+                    alert('验证码有误');
+                else if (rs === 2) {
+                    alert('用户名或者密码有误');
+                } else {
+                    alert('登录成功');
+                    window.location.href = '/admin'
+                }
+            }, 'json')
+        })
+        //------------------------------注册------------------------------
+        var register = document.getElementById('register');
+        var regForm = document.getElementById('regForm');
+        var pwds = regForm.querySelectorAll('input.pwd');
+        base.add(regForm, 'submit', function (ev) {
+            var e = ev || event;
+            base.stopDefault(e);
+            if (pwds[0].value !== pwds[1].value) {
+                alert('两次密码不一致');
+                return
+            }
+            $.post('/admin/register', $(this).serialize(), function (rs) {
+                if (rs) {
+                    alert('成功注册！');
+                    window.location.href = '/admin'
+                } else
+                    alert('帐号已被占用?');
+            }, 'json')
+        })
+
+    </script>
+</body>
+
+</html>

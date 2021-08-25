@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            padding: 70px 0 30px 0;
+            box-sizing: border-box;
+        }
+
+        .pub {
+            height: 100%;
+        }
+
+        footer {
+            background-color: rgba(188, 250, 255, 0.52);
+            line-height: 30px;
+        }
+
+        main div.lr div.panel-body {
+            height: calc(100% - 38px);
+            overflow-y: auto;
+        }
+
+        #one tbody img,
+        #two tbody img {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <!-- sr-only 用于提升可访问性（accessibility），它的含义是 screen reader only（仅提供给屏幕阅读器使用） -->
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/#">Brand</a>
+            </div>
+
+            <!-- 这个元素在移动设备中将被折叠起来 -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active hidden-sm"><a href="/#">公司简介</a></li>
+                    <li class="hidden-sm hidden-md"><a href="/#">新品出炉</a></li>
+                    <li class="hidden-sm hidden-md"><a href="/#">产品介绍</a></li>
+                    <li class="dropdown">
+                        <a href="/#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/#">Action</a></li>
+                            <li><a href="/#">Another action</a></li>
+                            <li><a href="/#">Something else here</a></li>
+                            <li><a href="/#">Separated link</a></li>
+                            <li><a href="/#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                    <li class="hidden-sm"><a href="/#">加强联系</a></li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="loginLink"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container-fluid pub">
+        <div class="row pub">
+            <div class="col-md-2 pub">
+                <div class="panel panel-primary pub lr">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">管理控制台</h3>
+                    </div>
+                    <div class="panel-body" style="overflow: auto;">
+                        <ul class="list-unstyled" style="line-height: 40px;">
+                            <li>
+                                <a href="#one" class="active">添加新闻</a>
+                            </li>
+                            <li>
+                                <a href="#two" class="">删除数据</a>
+                            </li>
+                            <li>
+                                <a href="#three" class="">数据修改</a>
+                            </li>
+                            <li>
+                                <a href="#four" class="">修改密码</a>
+                            </li>
+                            <li>
+                                <a href="#five" class="">清理垃圾图片</a>
+                            </li>
+                            <li>
+                                <a href="#six" class="">上传广告图</a>
+                            </li>
+                            <li>
+                                <a href="#seven" class="">添加通知</a>
+                            </li>
+                            <li>
+                                <a href="#eight" class="">添加视频</a>
+                            </li>
+                            <li>
+                                <a href="#nine" class="">添加图片新闻</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10  pub lr" style="overflow: hidden;">
+                <div class="panel panel-primary pub" id="one">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">添加新闻</h3>
+                    </div>
+                    <div class="panel-body container">
+                        <form class="form-horizontal form1" role="form">
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 control-label">插入图片：</label>
+                                <div class="col-sm-10">
+                                    <input type="file" name='image' class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback" style='margin-top: 30px;'>
+                                <button type="submit" class="col-sm-offset-3 btn btn-primary">添加</button>
+                                <button type="reset" class="col-sm-offset-3 btn btn-danger">重置</button>
+                            </div>
+                        </form>
+                        <hr>
+                        <form class="form-horizontal form2" role="form">
+                            <div class="btn-group col-sm-offset-2" style="margin-bottom:15px ;">
+                                <label class="btn btn-default">
+                                    <input type="radio" name="newType" checked value="headlines">头条新闻
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="newType" value="comprehensive">综合新闻
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="newType" value="learning">学术动态
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="newType" value="story">师大故事
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="newType" value="newest">最新新闻
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="newType" value="newhot">热点新闻
+                                </label>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 control-label">标题：</label>
+                                <div class="col-sm-10">
+                                    <input name='title' pattern="\S{2,100}" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 control-label">内容：</label>
+                                <div class="col-sm-10">
+                                    <textarea rows="10" name='content' class="form-control" required><p></p></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback" style='margin-top: 30px;'>
+                                <button type="submit" class="col-sm-offset-3 btn btn-primary">添加</button>
+                                <button type="reset" class="col-sm-offset-3 btn btn-danger">重置</button>
+                            </div>
+                        </form>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>标题</th>
+                                    <th>图片</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyOne">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-primary pub" id="two">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">删除数据</h3>
+                    </div>
+                    <div class="panel-body text-center">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">标题</th class="text-center">
+                                    <th class="text-center">图片</th>
+                                    <th class="text-center">操作</th class="text-center">
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <ul class="pagination">
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel panel-primary pub" id="three">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">数据修改</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-3 col-sm-offset-1">
+                                    请输入需查找的新闻标题：
+                                </div>
+                                <div class="col-sm-5">
+                                    <input class="form-control searchTxt">
+                                </div>
+                                <div class="col-sm-3">
+                                    <button type="button" class="btn btn-default searchBtn">搜索</button>
+                                </div>
+                            </div>
+                            <form style="margin-top: 30px" class="form-horizontal text-center" role="form" id="change">
+                                <div class="form-group has-feedback">
+                                    <label class="col-sm-2 control-label">新闻标题：</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" name="title">
+                                        <input type="hidden" value="" name="id">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">新闻内容：</label>
+                                    <div class="col-sm-8">
+                                        <textarea name="content" rows="10" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" style="margin-right: 100px" class="btn btn-primary">修改
+                                    </button>
+                                    <button type="reset" class="btn btn-default">重置</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-primary pub" id="four">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">修改密码</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal text-center" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">原密码：</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" name='oldPwd' required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">新密码：</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control pwd" name='newPwd' required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">确认密码：</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control pwd" required>
+                                </div>
+                            </div>
+                            <button type="submit" style="margin-right: 100px;" class="btn btn-primary">修改</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="panel panel-primary pub" id="five">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">清理垃圾图片</h3>
+                    </div>
+                    <div class="panel-body text-center">
+                        <hr>
+                        <button class="newsImg">清理新闻图片</button>
+                        <hr>
+                        <button class="advImg">清理广告图片</button>
+                    </div>
+                </div>
+                <div class="panel panel-primary pub" id="six">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">上传广告图</h3>
+                    </div>
+                    <div class="panel-body container">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 control-label">标题：</label>
+                                <div class="col-sm-10">
+                                    <input name='title' class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 control-label">内容：</label>
+                                <div class="col-sm-10">
+                                    <textarea name='content' class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 control-label">图片：</label>
+                                <div class="col-sm-10">
+                                    <input type="file" name='image' class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback" style='margin-top: 30px;'>
+                                <button type="submit" class="col-sm-offset-3 btn btn-primary">添加</button>
+                                <button type="reset" class="col-sm-offset-3 btn btn-danger">重置</button>
+                            </div>
+                        </form>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>标题</th>
+                                    <th>图片</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-primary pub" id="seven">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">添加通知</h3>
+                    </div>
+                    <div class="panel-body container">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 control-label">标题：</label>
+                                <div class="col-sm-10">
+                                    <input name='title' class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 control-label">内容：</label>
+                                <div class="col-sm-10">
+                                    <textarea name='content' class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback" style='margin-top: 30px;'>
+                                <button type="submit" class="col-sm-offset-3 btn btn-primary">添加</button>
+                                <button type="reset" class="col-sm-offset-3 btn btn-danger">重置</button>
+                            </div>
+                        </form>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>标题</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-primary pub" id="eight">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">添加视频</h3>
+                    </div>
+                    <div class="panel-body container">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 control-label">标题：</label>
+                                <div class="col-sm-10">
+                                    <input name='title' class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 control-label">内容：</label>
+                                <div class="col-sm-10">
+                                    <textarea name='content' class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 control-label">视频url：</label>
+                                <div class="col-sm-10">
+                                    <input name='url' class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 control-label">图片：</label>
+                                <div class="col-sm-10">
+                                    <input type="file" name='image' class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback" style='margin-top: 30px;'>
+                                <button type="submit" class="col-sm-offset-3 btn btn-primary">添加</button>
+                                <button type="reset" class="col-sm-offset-3 btn btn-danger">重置</button>
+                            </div>
+                        </form>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>标题</th>
+                                    <th>图片</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel panel-primary pub" id="nine">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">添加图片新闻</h3>
+                    </div>
+                    <div class="panel-body container">
+                        <form class="form-horizontal form1" role="form">
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 control-label">插入图片：</label>
+                                <div class="col-sm-10">
+                                    <input type="file" name='image' class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback" style='margin-top: 30px;'>
+                                <button type="submit" class="col-sm-offset-3 btn btn-primary">添加</button>
+                                <button type="reset" class="col-sm-offset-3 btn btn-danger">重置</button>
+                            </div>
+                        </form>
+                        <hr>
+                        <form class="form-horizontal form2" role="form">
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 control-label">标题：</label>
+                                <div class="col-sm-10">
+                                    <input name='title' class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 control-label">内容：</label>
+                                <div class="col-sm-10">
+                                    <textarea name='content' class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 control-label">图片集</label>
+                                <div class="col-sm-10">
+                                    <textarea name="photoes" readonly class="form-control photoes"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="col-sm-2 control-label">缩略图：</label>
+                                <div class="col-sm-10">
+                                    <input type="file" name='image' class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback" style='margin-top: 30px;'>
+                                <button type="submit" class="col-sm-offset-3 btn btn-primary">添加</button>
+                                <button type="reset" class="col-sm-offset-3 btn btn-danger">重置</button>
+                            </div>
+                        </form>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>标题</th>
+                                    <th>图片</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer navbar-fixed-bottom">
+        <ul class="list-inline text-center" style="margin-bottom: 0">
+            <li><a href="/http://www.miibeian.gov.cn/" target="_blank">京ICP备11008151号</a></li>
+            <li>京公网安备11010802014853</li>
+        </ul>
+    </footer>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/base.js"></script>
+
+    <script>
+        //--------------------添加数据--------------------------------
+        var one = document.getElementById('one');
+        var upImageForm = one.querySelector('form.form1');
+        var addDataForm = one.querySelector('form.form2');
+        var textarea = addDataForm.querySelector('textarea');
+        var tbodyOne = document.getElementById('tbodyOne');
+        base.add(upImageForm, 'submit', function (ev) {
+            var e = ev || event;
+            base.stopDefault(e);
+            var data = new FormData(this);
+            $.ajax({
+                url: "/admin/upload",
+                type: "post",
+                data,
+                dataType: "json",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (rs) {
+                    if (!rs) {
+                        alert('你没有选择文件');
+                        return;
+                    }
+                    var img = `<img src="/upload/${rs}"><p></p>`;
+                    textarea.value += img;
+                },
+                error: function () {
+                    alert('操作失败')
+                }
+            });
+        })
+
+        base.add(addDataForm, 'submit', function (ev) {
+            var e = ev || event;
+            base.stopDefault(e);
+            $.post('/admin/addData', $(this).serialize(), function (rs) {
+                if (rs) {
+                    var imgarr = rs.content.match(/<img[^>]+>/);
+                    if (imgarr !== null)
+                        var img = imgarr[0];
+                    else
+                        img = '';
+                    tbodyOne.innerHTML = `<tr><td>${rs.title}</td><td>${img}</td></tr>` + tbodyOne.innerHTML;
+                } else
+                    alert('插入失败');
+            }, 'json')
+        })
+        //-------------------删除数据-----------------------------------
+        var two = document.getElementById('two');
+        var tbody1 = two.querySelector('tbody');
+        var paging = two.querySelector('ul');
+        var pageSize = 6, curPage = 0, pages = 0;
+        function delDataInit(recall) {
+            $.getJSON('/admin/getEecords', function (rs) {
+                pages = Math.ceil(rs / pageSize);
+                var str = '';
+                str = `<li class="disabled first"><a href="#two">&laquo;首页</a>
+                </li class="disabled prev"><li class="disabled">
+                    <a href="#two">&laquo;上一页</a></li>`;
+                for (var i = 0; i < pages; i++) {
+                    if (i === 0) {
+                        str += `<li class='number active' index=${i}><a href="#two">${i + 1}</a></li>`
+                    } else
+                        str += `<li class='number' index=${i}><a href="#two">${i + 1}</a></li>`
+                }
+                str += `<li class='next'><a href="#two">下一页&raquo;</a></li>
+                  <li class='last'><a href="#two">尾页&raquo;</a></li>`;
+                paging.innerHTML = str;
+                if (recall) recall()
+                show(curPage);
+            });
+        }
+
+        function show(cPage) {
+            $.getJSON('/admin/getPage', { cPage, pageSize }, function (arr) {
+                var str = '';
+                if (!arr) {
+                    tbody1.innerHTML = '';
+                    return
+                }
+                arr.forEach(el => {
+                    var imgarr = el.content.match(/<img[^>]+>/);
+                    if (imgarr !== null)
+                        var img = imgarr[0];
+                    else
+                        img = '';
+                    str += `<tr><td>${el.title}</td><td>${img}</td>
+                    <td><button data-id='${el.id}'>删除</button></td></tr>`
+                });
+                tbody1.innerHTML = str
+            })
+        }
+        base.agent(tbody1, 'button', 'click', function () {
+            if (confirm('你确信要删除吗')) {
+                var id = this.getAttribute('data-id');
+                $.getJSON('/admin/delete?id=' + id, function (rs) {
+                    if (rs) {
+                        delDataInit(function () {
+                            if (curPage > pages - 1) curPage--;
+                            change();
+                        });
+                    }
+                    else
+                        alert('删除失败');
+                })
+            }
+        })
+        base.agent(paging, 'li', 'click', function () {
+            if (this.classList.contains('active')) return;
+            if (this.classList.contains('first'))
+                curPage = 0;
+            else if (this.classList.contains('last'))
+                curPage = pages - 1;
+            else if (this.classList.contains('prev')) {
+                curPage = curPage > 0 ? curPage - 1 : 0
+            } else if (this.classList.contains('next')) {
+                curPage = curPage < pages - 1 ? curPage + 1 : curPage
+            } else {
+                curPage = this.getAttribute('index') - 0;
+            }
+            show(curPage);
+            change(curPage);
+        });
+        function change() {
+            var lis = paging.querySelectorAll('li');
+            base.clearCls(lis, 'disabled');
+            base.clearCls(lis, 'disabled');
+            base.clearCls(lis, 'active');
+            if (curPage === 0) {
+                lis[0].classList.add('disabled');
+                lis[1].classList.add('disabled');
+                lis[2].classList.add('active');
+            } else if (curPage === pages - 1) {
+                lis[pages + 3].classList.add('disabled');
+                lis[pages + 2].classList.add('disabled');
+                lis[pages + 1].classList.add('active');
+            } else {
+                lis[curPage + 2].classList.add('active')
+            }
+        }
+        //----------------------数据修改---------------------------------
+        var three = document.getElementById('three');
+        var searchTxt = three.querySelector('input.searchTxt');
+        var searchBtn = three.querySelector('button.searchBtn');
+        var editForm = three.querySelector('form');
+        var title = editForm.querySelector('input[name="title"]');
+        var content = editForm.querySelector('textarea[name="content"]');
+        var id = editForm.querySelector('input[name="id"]');
+        var img = editForm.querySelector('img');
+        base.add(searchBtn, 'click', function () {
+            $.getJSON('/admin/search?keyword=' + searchTxt.value, function (res) {
+                if (res) {
+                    title.value = res.title;
+                    content.value = res.content;
+                    id.value = res.id;
+                }
+            })
+        });
+        base.add(editForm, 'submit', function (ev) {
+            var e = ev || event;
+            base.stopDefault(e);
+            $.getJSON('/admin/edit', $(this).serialize(), function (res) {
+                if (res) {
+                    alert('成功修改')
+                } else
+                    alert('修改失败');
+            })
+        })
+        //---------------------------帐号功能---------------------------------
+        var loginLink = document.getElementById('loginLink');
+        base.agent(loginLink, 'a', 'click', function () {
+            $.getJSON('/admin/logout', function (res) {
+                if (res) {
+                    window.location.href = "/"
+                }
+            })
+        })
+        $.getJSON('/admin/getNicheng', function (res) {
+            if (res)
+                loginLink.innerHTML = `<a class='logout' href="##">欢迎你：${res}-----注销</a>`
+        });
+        //-------------------------修改密码----------------------------
+        var four = document.getElementById('four');
+        var pwdForm = four.querySelector('form');
+        var pwds = pwdForm.querySelectorAll('input.pwd');
+        base.add(pwdForm, 'submit', function (ev) {
+            var e = ev || event;
+            base.stopDefault(e);
+            if (pwds[0].value !== pwds[1].value) {
+                alert('两次密码不一样');
+                return
+            }
+            $.post('/admin/changePwd', $(this).serialize(), function (res) {
+                if (res) {
+                    alert('修改成功');
+                    console.log(res)
+                } else {
+                    alert('原密码不对');
+                }
+            }, 'json')
+        })
+        //----------------------垃圾图片清理--------------------------
+        var five = document.getElementById('five');
+        base.agent(five, 'button', 'click', function () {
+            if (confirm('你确信要清理吗？')) {
+                if (this.className === 'newsImg')
+                    var param = { path: './assets/upload/' };
+                else
+                    param = { path: './assets/adv/' };
+                $.getJSON('/admin/clearImg', param, function (rs) {
+                    alert("清理成功")
+                })
+            }
+        });
+        //------------------广告图片--------------------------------------
+        var six = document.getElementById('six');
+        var upAdvForm = six.querySelector('form');
+        var tbody = six.querySelector('tbody');
+        base.add(upAdvForm, 'submit', function (ev) {
+            var e = ev || event;
+            var data = new FormData(this);
+            base.stopDefault(e);
+            $.ajax({
+                url: "/admin/upAdv",
+                type: "post",
+                data,
+                dataType: "json",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (res) {
+                    if (res.flag === 1) {
+                        alert('数据添加失败');
+                    } else {
+                        setTimeout(() => {
+                            tbody.innerHTML = `<tr><td>${res.title}</td><td>
+                       <img width='150' src='/adv/${res.src}'></td></tr>` + tbody.innerHTML;
+                        }, 2000)
+                    }
+                },
+                error: function () {
+                    alert('操作失败')
+                }
+            });
+        })
+        //------------------添加通知--------------------------------------
+        var seven = document.getElementById('seven');
+        var noticeForm = seven.querySelector('form');
+        var noticetbody = seven.querySelector('tbody');
+        base.add(noticeForm, 'submit', function (ev) {
+            var e = ev || event;
+            base.stopDefault(e);
+            console.log($(this).serialize());
+
+            $.getJSON('/admin/addNotice', $(this).serialize(), function (res) {
+                if (res) {
+                    noticetbody.innerHTML = `<tr><td>${res.title}</td>
+                   </tr>` + noticetbody.innerHTML;
+                }
+            })
+        })
+        //------------------添加视频--------------------------------------
+        var eight = document.getElementById('eight');
+        var videoForm = eight.querySelector('form');
+        var videoTbody = eight.querySelector('tbody');
+        base.add(videoForm, 'submit', function (ev) {
+            var e = ev || event;
+            base.stopDefault(e);
+            var data = new FormData(this);
+            $.ajax({
+                url: "/admin/upVideo",
+                type: "post",
+                data,
+                dataType: "json",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (res) {
+                    if (res.flag === 1) {
+                        alert('数据添加失败');
+                    } else {
+                        setTimeout(() => {
+                            videoTbody.innerHTML = `<tr><td>${res.title}</td><td>
+                       <img width='150' src='/video/${res.src}'></td></tr>` + videoTbody.innerHTML;
+                        }, 2000)
+                    }
+                },
+                error: function () {
+                    alert('操作失败')
+                }
+            });
+        })
+        //--------------------添加图片新闻--------------------------------
+        var nine = document.getElementById('nine');
+        var nineForm1 = nine.querySelector('form.form1');
+        var nineForm2 = nine.querySelector('form.form2');
+        var photoesTxt = nineForm2.querySelector('textarea.photoes');
+        var nineTbody = nine.querySelector('tbody');
+        base.add(nineForm1, 'submit', function (ev) {
+            var e = ev || event;
+            base.stopDefault(e);
+            var data = new FormData(this);
+            $.ajax({
+                url: "/admin/nineUpLoad",
+                type: "post",
+                data,
+                dataType: "json",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (rs) {
+                    if (!rs) {
+                        alert('你没有选择文件');
+                        return;
+                    }
+                    photoesTxt.value+= rs+',';
+                },
+                error: function () {
+                    alert('操作失败')
+                }
+            });
+        })
+        base.add(nineForm2, 'submit', function (ev) {
+            var e = ev || event;
+            base.stopDefault(e);
+            var data = new FormData(this);
+            $.ajax({
+                url: "/admin/nineAddData",
+                type: "post",
+                data,
+                dataType: "json",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (rs) {
+                    if (rs) {
+                        const img = `<img src=${'/photoes/'+rs.src}>`;
+                        nineTbody.innerHTML = `<tr><td>${rs.title}</td><td>${img}</td></tr>` + tbodyOne.innerHTML;
+                    } else
+                        alert('插入失败');
+                },
+                error: function () {
+                    alert('操作失败')
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>
